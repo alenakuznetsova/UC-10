@@ -1,0 +1,32 @@
+User
+create description for application with validation for input validation 
+function with a single regular expression 
+regular expression should validate the maximum string length (passed as parameter); it should return a match if the string length is within the acceptable range and a non-match if it is not
+also validate that the string contains at least one uppercase letter, one lowercase letter, one digit, and one special character from a predefined list: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~. It should return a match if the criteria are met and a non-match if they are not
+also regular expression should validate that the string does not contain any whitespace characters (spaces, tabs, or newlines). This should return a non-match if any whitespace characters are found
+
+
+ChatGPT
+Sure, here's a description of a function that could satisfy those requirements:
+
+Function Name: ValidateString
+
+Description:
+
+The ValidateString function is designed to ensure the integrity and quality of user input strings in applications. It employs a regular expression (regex) to conduct various checks on the string input.
+
+The function accepts two parameters:
+
+inputString - The string provided by the user that needs to be validated.
+maxLength - The maximum acceptable length for the string.
+The function's validation criteria include the following:
+
+Length: The length of the inputString must not exceed the maxLength parameter. If the string length is within the acceptable range, the function will return a match. If it is not, a non-match is returned.
+
+Character Requirement: The inputString must contain at least one uppercase letter, one lowercase letter, one digit, and one special character from the predefined list: !"#$%&'()*+,-./:;<=>?@[]^_`{|}~. If all these criteria are met, the function will return a match. If not, a non-match is returned.
+
+Whitespace: The inputString must not contain any whitespace characters (spaces, tabs, or newlines). If any whitespace characters are found, the function will return a non-match.
+
+The ValidateString function will thus be highly beneficial in scenarios where data integrity and input validity are of the utmost importance, such as in password fields or user name fields, preventing unwanted or insecure user input.
+
+This function leverages the power of regex to conduct these validation checks efficiently and effectively, helping to ensure a smoother user experience and a safer application environment.
