@@ -132,3 +132,73 @@ describe("Regular Expression Implementation", () => {
 
 });
 In the additional tests, we're checking for inputs that start or end with tabs or newline characters, as these are commonly used whitespace characters in addition to spaces. Adjust the tests as needed to match your specific requirements.
+
+User
+create tests use jest for 
+function validateString (str, maxLength) {
+  if (str.length > maxLength || /\s/.test(str)) {
+      return false;
+  }
+
+  const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!\"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]).*$/;
+  return regex.test(str);
+}
+
+ChatGPT
+Sure, I can help with that. The function you've given seems to validate if a string:
+
+Is not longer than a specified maximum length,
+Does not contain any whitespace characters, and
+Contains at least one uppercase letter, one lowercase letter, one digit, and one special character.
+Here's a set of Jest tests for this function:
+
+javascript
+Copy code
+const validateString = (str, maxLength) => {
+  if (str.length > maxLength || /\s/.test(str)) {
+      return false;
+  }
+
+  const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!\"#$%&'()*+,\-.\/:;<=>?@\[\\\]^_`{|}~]).*$/;
+  return regex.test(str);
+}
+
+describe("String Validation", () => {
+  
+  test("should fail for strings longer than max length", () => {
+    let str = "ThisStringIsDefinitelyLongerThan10Characters";
+    expect(validateString(str, 10)).toBeFalsy();
+  });
+
+  test("should fail for strings containing whitespace", () => {
+    let str = "Invalid String";
+    expect(validateString(str, 20)).toBeFalsy();
+  });
+
+  test("should fail for strings missing uppercase letters", () => {
+    let str = "alllowercase1!";
+    expect(validateString(str, 20)).toBeFalsy();
+  });
+
+  test("should fail for strings missing lowercase letters", () => {
+    let str = "ALLUPPERCASE1!";
+    expect(validateString(str, 20)).toBeFalsy();
+  });
+
+  test("should fail for strings missing special characters", () => {
+    let str = "NoSpecialChars123";
+    expect(validateString(str, 20)).toBeFalsy();
+  });
+
+  test("should fail for strings missing digit", () => {
+    let str = "NoDigits!";
+    expect(validateString(str, 20)).toBeFalsy();
+  });
+
+  test("should pass for valid strings", () => {
+    let str = "Valid1!";
+    expect(validateString(str, 10)).toBeTruthy();
+  });
+
+});
+In these tests, I'm assuming that the maximum length for the string should be 10 or 20. Please adjust these values according to your actual requirements.
